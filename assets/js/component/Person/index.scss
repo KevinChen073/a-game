@@ -1,0 +1,27 @@
+
+.person-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: 100px;
+    &:hover {
+        background: rgba(255,255,255,0.3);
+    }
+}
+
+.person-run {
+    
+    offset-rotate: 0deg;
+    animation: move 3s linear infinite;
+    animation-direction: alternate;
+}
+.person-stop {
+    animation-play-state: paused;
+}
+@keyframes move {
+    /* 之前语法 */
+    100% { offset-distance: 100%;}
+    /* 当前规范语法 */
+    100% { offset-distance: 100%;}
+  }

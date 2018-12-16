@@ -1,0 +1,38 @@
+.shake {
+    animation-name: myShake;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.hotarea {
+    position: absolute;
+}
+
+.island-container {
+    position: absolute;
+    transition-duration: 0.5s;
+    top: 0;
+    left: 0;
+}
+.island-img {
+    transform-origin: 0 0;
+    transition-duration: 0.5s;
+}
+.island-big {
+    z-index: 10;
+    .island-img {
+        transform: scale(2);
+    }
+}
+
+@keyframes myShake
+{
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(20px);
+    }
+}
