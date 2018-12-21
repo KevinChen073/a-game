@@ -7,9 +7,9 @@ import './index.scss';
 
 export default class Button extends Component {
     render() {
-        const {children} = this.props;
+        const {children, onClick} = this.props;
         return (
-            <div className="button" >
+            <div onClick={onClick} className="button" >
                 {children}
             </div>
         );

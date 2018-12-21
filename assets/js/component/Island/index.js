@@ -33,33 +33,31 @@ export default class BaseComp extends Component {
     }
 
     onClick() {
-        // alert('按什么按，放手');
-        // 滚动到屏幕中央，并且放大
-        // 获取offsetLeft]top
-        var offsetLeft = document.getElementsByClassName('drop-container')[0].offsetLeft;
-        var offsetTop = document.getElementsByClassName('drop-container')[0].offsetTop;
-        console.log(this.windowOffsetTop)
-        if (!this.state.isBig) {
-            this.setState({
-                posX: -offsetTop + this.windowOffsetTop,
-                posY: -offsetLeft + this.windowOffsetLeft,
-                isBig: true
-            });
-            setTimeout(()=>{
-                this.setState({
-                    showPerson: true
-                })
-            }, 550)
-            Emitter.emit('global/showMask');
-        } else {
-            this.setState({
-                posX: this.initLeft,
-                posY: this.initTop,
-                isBig: false,
-                showPerson: false
-            });
-            Emitter.emit('global/hideMask');
-        }
+        // 直接用事件形式唤出另一个Page
+        // var offsetLeft = document.getElementsByClassName('drop-container')[0].offsetLeft;
+        // var offsetTop = document.getElementsByClassName('drop-container')[0].offsetTop;
+        Emitter.emit('global/showIsland', {...this.props});
+        // if (!this.state.isBig) {
+        //     this.setState({
+        //         posX: -offsetTop + this.windowOffsetTop,
+        //         posY: -offsetLeft + this.windowOffsetLeft,
+        //         isBig: true
+        //     });
+        //     setTimeout(()=>{
+        //         this.setState({
+        //             showPerson: true
+        //         });
+        //     }, 550)
+        //     Emitter.emit('global/showMask');
+        // } else {
+        //     this.setState({
+        //         posX: this.initLeft,
+        //         posY: this.initTop,
+        //         isBig: false,
+        //         showPerson: false
+        //     });
+        //     Emitter.emit('global/hideMask');
+        // }
     }
 
     render() {

@@ -1,0 +1,25 @@
+$width-size: 75px; // 四边的样式高度
+.hall-background {
+    transition-duration: 0.5s;
+    
+}
+.hall-container {
+    .edge-guard {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        &:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+    }
+    .edge-left {
+        top: 0;
+        left: 0;
+        width: $width-size;
+    }
+    .edge-right {
+        top: 0;
+        right: 0;
+        width: $width-size;
+    }
+}

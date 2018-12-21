@@ -1,0 +1,24 @@
+.scene-container {
+    background-color: rgb(2,9,38);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    .button-group {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: flex;
+    }
+    .button-group-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}

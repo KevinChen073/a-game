@@ -1,0 +1,22 @@
+.shake {
+    animation-name: myShake;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.island-detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes myShake
+{
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(20px);
+    }
+}

@@ -20,4 +20,7 @@ module.exports = {
     cloud5: `${imgPath}/cloud5.png`,
     info1: `${imgPath}/info.png`,
     person1: `${imgPath}/person1.png`,
+    hall: `${imgPath}/hall.jpg`,
+    back: `${imgPath}/comp/back.png`,
+    icons: `${imgPath}/comp/icons.png`,
 }
