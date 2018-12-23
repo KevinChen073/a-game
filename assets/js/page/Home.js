@@ -29,7 +29,7 @@ import {
     info1,
     person1,
     hall,
-    back, icons
+    back, icons,detail
 } from '../Utils/imgPath';
 
 export default class Game extends Component {
@@ -87,6 +87,20 @@ export default class Game extends Component {
                 showIslandDialog: false,
             });
         });
+        Emitter.on('global/showDetail', (config = {})=>{
+            // 更新Detail数据
+            this.data.detailConfig = config;
+            this.setState({
+                showDetail: true,
+            });
+        });
+        Emitter.on('global/hideDetail', ()=>{
+            // 更新Detail数据
+            this.data.detailConfig = {};
+            this.setState({
+                showDetail: false,
+            });
+        });
     }
 
     renderHome() {
@@ -97,13 +111,15 @@ export default class Game extends Component {
                 canMove={!showIsland}
                 bgHeight={1230}
                 bgWidth={2000}
-                backgroundContent={<Background />}
+                backgroundContent={<Background style={{width: '100%'}}/>}
             >
                 <BaseComp src={cloud1} position={{x: 600, y: 300}} style={{width: 150}}/>
                 <BaseComp src={cloud2} position={{x: 300, y: 1000}} style={{width: 150}}/>
                 <BaseComp src={cloud3} position={{x: 500, y: 1300}} style={{width: 150}}/>
                 <BaseComp src={cloud4} position={{x: 200, y: 1800}} style={{width: 150}}/>
-                <Island src={island1} bigSrc={islandBig1} shake={false} position={{x: 100, y: 200}} style={{width: 400, height: 400}}
+                <Island src={island1} bigSrc={islandBig1}
+                    position={{x: 100, y: 200}}
+                    style={{width: 250, height: 250}}
                     actionButton={[
                         <Button>开始更衣 >></Button>,
                     ]}
@@ -111,9 +127,9 @@ export default class Game extends Component {
                     <Person
                         onClick={()=>{}}
                         pathParam="M10,80 q100,120 120,20 q140,-50 160,0"
-                        position={{x: 330, y: 200}}
+                        position={{x: 380, y: 200}}
                         src={person1}
-                        style={{width: 85, height: 200}}
+                        style={{width: 42, height: 100}}
                         onClick={()=>{Emitter.emit('global/showDialog', {name: '丽丽'});}}
                     />
                     <Info position={{x: 200, y: 400}} src={info1} style={{width: 100, height: 100}}/>
@@ -121,8 +137,8 @@ export default class Game extends Component {
                 <Island
                     src={island2}
                     bigSrc={islandBig2}
-                    position={{x: 500, y: 200}}
-                    style={{width: 400}}
+                    position={{x: 300, y: 300}}
+                    style={{width: 250}}
                     actionButton={[
                         <Button onClick={()=>{Emitter.emit('global/showHall');}}>进入广场 >></Button>,
                     ]}
@@ -130,8 +146,8 @@ export default class Game extends Component {
                 <Island
                     src={island3}
                     bigSrc={islandBig3}
-                    position={{x: 700, y: 200}}
-                    style={{width: 400}}
+                    position={{x: 500, y: 700}}
+                    style={{width: 250}}
                     actionButton={[
                         <Button>
                             <Link to="/decorator">装饰空间 >></Link>
@@ -139,27 +155,45 @@ export default class Game extends Component {
                         <Button>进入空间 >></Button>,
                     ]}
                 />
-                <Island src={island4} bigSrc={islandBig4} position={{x: 700, y: 700}} style={{width: 600, height: 400}} />
-                <Island src={island5} bigSrc={islandBig5} position={{x: 700, y: 1200}} style={{width: 600, height: 500}} />
-                <Island src={island6} bigSrc={islandBig6} position={{x: 700, y: 1600}} style={{width: 600, height: 400}} />
+                <Island src={island4} bigSrc={islandBig4} position={{x: 200, y: 800}} style={{width: 400, height: 300}} />
+                <Island src={island5} bigSrc={islandBig5} position={{x: 100, y: 1200}} style={{width: 400, height: 300}} />
+                <Island src={island6} bigSrc={islandBig6} position={{x: 700, y: 1200}} style={{width: 400, height: 300}} />
             </DropableBox>
         );
     }
 
+    renderDetail() {
+        const {showDetail, showIslandDialog} = this.state;
+        return (
+            <Scene visible={showDetail}>
+                <Mask>
+                    <div style={{marginTop: '150px', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
+                        <img src={detail} />
+                        <span className="detail-text">巴啦啦小魔仙猪猪美琪变身！</span>
+                    </div>
+                    <div className="button-group-top">
+                        <div onClick={()=>{
+                            Emitter.emit('global/hideDetail');
+                        }}><img className="back" src={back} /></div>
+                    </div>                        
+                </Mask>
+            </Scene>
+        );
+    }
     renderIsland() {
         const {showIsland, showIslandDialog} = this.state;
         return (
             <Scene visible={showIsland}>
                 <Mask>
-                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
+                    <div style={{display: 'flex', marginTop: '20px', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
                         {showIslandDialog && <DialogItem {...this.data.dialogConfig}/>}
                         <IslandDetail {...this.data.island} showPeople={!showIslandDialog}/>
                     </div>
                     <div className="button-group-top">
                         <div onClick={()=>{
                             Emitter.emit('global/hideIsland');
-                        }}><img src={back} /></div>
-                        <img src={icons} />
+                        }}><img className="back" src={back} /></div>
+                        <img className="icons" src={icons} />
                     </div>                        
                     <div className="button-group">
                         {this.data.actionButton}
@@ -183,6 +217,7 @@ export default class Game extends Component {
                 {this.renderHome()}
                 {this.renderIsland()}
                 {this.renderHall()}
+                {this.renderDetail()}
             </div>
         );
     }

@@ -30,6 +30,7 @@ module.exports = {
     detail: `${imgPath}/detail.jpg`,
 
     dialog: `${imgPath}/dialog.png`,
+    detail: `${imgPath}/detail-person.jpeg`,
 
     banner: `${imgPath}/login/banner.jpg`,
     icon_check: `${imgPath}/login/icon_check.jpg`,

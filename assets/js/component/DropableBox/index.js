@@ -175,7 +175,7 @@ export default class DropableBox extends Component {
                         isMiniMode: !isMiniMode
                     });
                     this.resetMove();
-                }}>点我变小</div>}
+                }} />}
             </div>
         );
     }

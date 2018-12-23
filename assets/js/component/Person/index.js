@@ -41,7 +41,7 @@ export default class Person extends Component {
                 this.setState({
                     pause: false
                 });
-            }} className={personCls} style={{top: posX, left: posY, offsetPath: `path("${pathParam}")`}}>
+            }} className={personCls} style={{top: posX, left: posY, offsetPath: `path("${pathParam}")`, ...style}}>
                 <img src={src} style={style} />
             </div>
         );

@@ -20,5 +20,13 @@
         display: flex;
         justify-content: space-between;
         flex-direction: row;
+        height: 70px;
+        overflow: hidden;
+        .back {
+            width: 120px;
+        }
+        .icons {
+            height: 90px;
+        }
     }
 }
