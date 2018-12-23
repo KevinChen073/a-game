@@ -25,7 +25,7 @@ export default class BaseComp extends Component {
 
 
     render() {
-        const {src, bigSrc, shake = true, style = {}, children, actionButton} = this.props;
+        const {src, bigSrc, shake = true, style = {}, children, actionButton, showPeople} = this.props;
         const {width} = style;
         const islandCls = classnames({
             "island-detail": true,
@@ -37,7 +37,7 @@ export default class BaseComp extends Component {
         return (
             <div className={islandCls} style={{animationDuration: `${1000 + randomDelay}ms`}}>
                 <img src={bigSrc} className="island-img" style={{width: `auto`, height: `${this.height}px`}} />
-                {children}
+                {showPeople && children}
             </div>
         );
     }

@@ -4,6 +4,7 @@
 // require lib
 import React, {Component} from "react";
 import classnames from 'classnames';
+import Emitter from './../../Utils/Emitter';
 import './index.scss';
 
 const CONST_WIDTH_PRE_PIC = [0, -1072, -2200, -3800]; // 3900
@@ -23,10 +24,16 @@ export default class Hall extends Component {
             this.setState({
                 xIndex: xIndex >= CONST_WIDTH_PRE_PIC.length ? xIndex : xIndex + 1
             });
+            if (xIndex >= CONST_WIDTH_PRE_PIC.length) {
+                Emitter.emit('global/hideHall');
+            }
         } else {
             this.setState({
                 xIndex: xIndex <= 0 ? xIndex : xIndex - 1
             });
+            if (xIndex == 0) {
+                Emitter.emit('global/hideHall');
+            }
         }
     }
     render() {

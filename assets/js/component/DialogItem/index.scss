@@ -1,0 +1,29 @@
+.dialog-container {
+    display: flex;
+    width: 450px;
+    margin-right: 100px;
+    position: relative;
+    .dialog-content {
+        width: 450px;
+        height: 630px;
+    }
+    .info-pos {
+        position: absolute;
+        top: 44px;
+        left: 138px;
+        color: white;
+        width: 267px;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+    }
+    .info-href {
+        font-size: 14px;
+        color: white;
+        text-decoration: none;
+        transition-duration: 0.3s;
+        &:hover {
+            color: #ddd;
+        }
+    }
+}

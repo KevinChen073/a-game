@@ -4,13 +4,19 @@
 // require lib
 import React, {Component} from "react";
 import classnames from 'classnames';
-import Dialog from '../Dialog';
 import './index.scss';
 
 export default class Info extends Component {
+
+    constructor(props) {
+        super(props);
+        this.onClick = this.onClick.bind(this);
+    }
+
     onClick(e) {
-        Dialog.show();
-        e.stopPropagation();
+        const {onClick} = this.props;
+        onClick && onClick();
+        e.stopPropagation()
     }
 
     render() {

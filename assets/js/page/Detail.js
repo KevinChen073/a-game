@@ -3,19 +3,19 @@
  */
 // require lib
 import React, {Component} from "react";
-import './info.scss';
+import './detail.scss';
 import { Link } from 'react-router-dom'
 import {
-    welcome
+    detail
 } from '../Utils/imgPath';
 
 
-export default class InfoPage extends Component {
+export default class DecoratorPage extends Component {
     render() {
         return (
-            <div className="info-content">
+            <div className="detail-content">
                 <div className="banner-content">
-                    <img src={welcome} className="banner"/>
+                    <img src={detail} className="banner"/>
                 </div>
                 <Link to="/home">Hello</Link>
             </div>

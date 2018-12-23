@@ -130,9 +130,12 @@ export default class DropableBox extends Component {
 
         // 去除所有图片拖动效果
         setTimeout(()=>{
-            document.getElementsByTagName('img')[0].onmousedown = function(e){
-                e.preventDefault()
-            };
+            const imgList = document.getElementsByTagName('img');
+            if (imgList && imgList.length > 0) {
+                imgList[0].onmousedown = function(e){
+                        e.preventDefault()
+                };
+            }
         }, 500);
     }
     render() {

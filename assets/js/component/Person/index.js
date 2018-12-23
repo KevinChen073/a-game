@@ -4,15 +4,19 @@
 // require lib
 import React, {Component} from "react";
 import classnames from 'classnames';
-import Dialog from '../Dialog';
 import './index.scss';
 
 export default class Person extends Component {
+    constructor(props) {
+        super(props);
+        this.onClick = this.onClick.bind(this);
+    }    
     state = {
         pause: false
     }
     onClick(e) {
-        Dialog.show();
+        const {onClick} = this.props;
+        onClick && onClick();
         e.stopPropagation()
     }
 

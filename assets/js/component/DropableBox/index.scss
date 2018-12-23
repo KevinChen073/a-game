@@ -1,4 +1,6 @@
 $width-size: 75px; // 四边的样式高度
+$color-white: rgba(255,255,255,0.4);
+$color-opacity: rgba(255,255,255,0);
 
 .container {
     background-color: rgb(2,9,38);
@@ -22,30 +24,40 @@ $width-size: 75px; // 四边的样式高度
         position: fixed;
         height: 100%;
         width: 100%;
-        &:hover {
-            background-color: rgba(255,255,255,0.3);
-        }
     }
 
     .edge-top {
         top: 0;
         left: 0;
         height: $width-size;
+        &:hover {
+            background: linear-gradient(to top, $color-opacity, $color-white);
+        }
     }
     .edge-left {
         top: 0;
         left: 0;
         width: $width-size;
+        &:hover {
+            background: linear-gradient(to left, $color-opacity, $color-white);
+        }
+
     }
     .edge-right {
         top: 0;
         right: 0;
         width: $width-size;
+        &:hover {
+            background: linear-gradient(to right, $color-opacity, $color-white);
+        }
     }
     .edge-bottom {
         bottom: 0;
         left: 0;
         height: $width-size;
+        &:hover {
+            background: linear-gradient(to bottom, $color-opacity, $color-white);
+        }
     }
     .edge-button {
         background-color: rgba(255,255,255,0.3);

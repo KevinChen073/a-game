@@ -1,0 +1,117 @@
+.login-content {
+    position: absolute;
+    background-color: #fff;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .banner-content {
+        width: 100%;
+        overflow: hidden;
+        height: 355px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .banner {
+        height: 355px;
+        width: auto;
+    }
+    .button-group {
+        .login-button {
+
+        }
+    }
+    .content {
+        width: 550px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .button-group {
+            display: flex;
+            flex-direction: row;
+            .login-button {
+                width: 240px;
+                height: 40px;
+                font-size: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .button-left {
+                background-color: #e1eaff;
+                color: #0b2880;
+            }
+            .button-right {
+                background-color: #faf9fe;
+                color: #ccc;
+            }
+        }
+        .input-item {
+            width: 480px;
+            height: 40px;
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            .icon {
+                width: 28px;
+                height: 28px;
+                margin-right: 16px;
+            }
+            .login-input {
+                height: 45px;
+                display: flex;
+                flex: 1;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+            .icon-check {
+                width: 100px;
+                height: 45px;
+                margin-left: 10px;
+            }
+        }
+    }
+    .action {
+        width: 480px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #9abbff;
+        font-size: 18px;
+        color: #fff;
+        margin-top: 25px;
+        transition-duration: 0.3s;
+        border-radius: 5px;
+        &:hover {
+            background-color: #5c90fc;
+        }
+    }
+    .order-action {
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 480px;
+        a {
+            font-size: 12px;
+            color: #ccc;
+            display: inline-block;
+        }
+    }
+    .special-thanks {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        div {
+            font-size: 12px;
+            color: #ccc;
+        }
+    }
+}

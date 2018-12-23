@@ -23,4 +23,21 @@ module.exports = {
     hall: `${imgPath}/hall.jpg`,
     back: `${imgPath}/comp/back.png`,
     icons: `${imgPath}/comp/icons.png`,
+
+    login: `${imgPath}/login.jpg`,
+    welcome: `${imgPath}/welcome.jpg`,
+    decorator: `${imgPath}/decorator.jpg`,
+    detail: `${imgPath}/detail.jpg`,
+
+    dialog: `${imgPath}/dialog.png`,
+
+    banner: `${imgPath}/login/banner.jpg`,
+    icon_check: `${imgPath}/login/icon_check.jpg`,
+    icon_account: `${imgPath}/login/icon_account.jpg`,
+    icon_person: `${imgPath}/login/icon_person.jpg`,
+    icon_lock: `${imgPath}/login/icon_lock.jpg`,
+
+    empty_island1: `${imgPath}/empty-island/1.png`,
+    empty_island2: `${imgPath}/empty-island/2.png`,
+    empty_island3: `${imgPath}/empty-island/3.png`,
 }
