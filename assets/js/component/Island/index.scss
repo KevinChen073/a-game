@@ -6,24 +6,33 @@
     animation-direction: alternate;
 }
 
-.hotarea {
-    position: absolute;
-}
-
 .island-container {
     position: absolute;
     transition-duration: 0.5s;
     top: 0;
     left: 0;
-}
-.island-img {
-    transform-origin: 0 0;
-    transition-duration: 0.5s;
-}
-.island-big {
-    z-index: 10;
+    &:hover {
+        -webkit-animation-name: pulse;
+        animation-name: pulse
+    }
+    .island-space {
+        position: absolute;
+    }
     .island-img {
-        transform: scale(2);
+        transform-origin: 0 0;
+        transition-duration: 0.5s;
+    }
+    .island-big {
+        z-index: 10;
+        .island-img {
+            transform: scale(2);
+        }
+    }
+    .label {
+        color: #4bffdf;
+        font-size: 14px;
+        position: absolute;
+        width: 120px;
     }
 }
 

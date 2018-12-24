@@ -7,6 +7,7 @@ import { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
 import './index.scss';
 
+import {icons} from './../../Utils/imgPath';
 import Mask from './../Mask';
 function getCss(ele, prop) {
     return parseInt(window.getComputedStyle(ele)[prop]);
@@ -169,6 +170,9 @@ export default class DropableBox extends Component {
                     <div className="edge-guard edge-left" onMouseOver={()=>{this.doMove('left')}} onMouseOut={()=>{this.stopMove()}}  />,
                     <div className="edge-guard edge-right" onMouseOver={()=>{this.doMove('right')}} onMouseOut={()=>{this.stopMove()}}  />,
                     <div className="edge-guard edge-bottom" onMouseOver={()=>{this.doMove('bottom')}} onMouseOut={()=>{this.stopMove()}}  />,
+                    <div className="button-group-top">
+                        <img className="icons animated" src={icons} />
+                    </div> 
                 ]}
                 {canMove && <div className="edge-guard edge-button" onClick={()=>{
                     this.setState({

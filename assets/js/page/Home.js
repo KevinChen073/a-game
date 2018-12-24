@@ -18,16 +18,17 @@ import Info from '../component/Info';
 import BaseComp from '../component/BaseComp';
 import DropableBox from '../component/DropableBox';
 import DialogItem from '../component/DialogItem';
+import { CSSTransition } from 'react-transition-group';
 
 import Emitter from '../Utils/Emitter';
 import './home.scss';
 
 import {
-    island1, island2, island3, island4, island5, island6,
-    islandBig1, islandBig2, islandBig3, islandBig4, islandBig5, islandBig6,
+    island1, island2, island3, island4, island5, island6, island7,
+    islandBig1, islandBig2, islandBig3, islandBig4, islandBig5, islandBig6, islandBig7,
     cloud1, cloud2, cloud3, cloud4,
     info1,
-    person1,
+    person1, person2, person3, person4,
     hall,
     back, icons,detail
 } from '../Utils/imgPath';
@@ -123,14 +124,28 @@ export default class Game extends Component {
                     actionButton={[
                         <Button>开始更衣 >></Button>,
                     ]}
+                    label="我关注的小组"
                 >
                     <Person
-                        onClick={()=>{}}
-                        pathParam="M10,80 q100,120 120,20 q140,-50 160,0"
-                        position={{x: 380, y: 200}}
+                        position={{x: 480, y: 500}}
                         src={person1}
-                        style={{width: 42, height: 100}}
                         onClick={()=>{Emitter.emit('global/showDialog', {name: '丽丽'});}}
+                    />
+                    <Person
+                        // pathParam="M10,80 q100,120 120,20 q140,-50 160,0"
+                        position={{x: 480, y: 650}}
+                        src={person2}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 520, y: 650}}
+                        src={person3}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 560, y: 650}}
+                        src={person4}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
                     />
                     <Info position={{x: 200, y: 400}} src={info1} style={{width: 100, height: 100}}/>
                 </Island>
@@ -140,24 +155,147 @@ export default class Game extends Component {
                     position={{x: 300, y: 300}}
                     style={{width: 250}}
                     actionButton={[
-                        <Button onClick={()=>{Emitter.emit('global/showHall');}}>进入广场 >></Button>,
+                        <Button>进去看看 >></Button>,
                     ]}
-                />
+                    label="更衣室"
+                >
+                    <Person
+                        position={{x: 480, y: 650}}
+                        src={person2}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 480, y: 680}}
+                        src={person3}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 260, y: 100}}
+                        src={person4}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                </Island>
                 <Island
                     src={island3}
                     bigSrc={islandBig3}
                     position={{x: 500, y: 700}}
                     style={{width: 250}}
                     actionButton={[
+                        <Button>进去看看 >></Button>,
+                    ]}
+                    label="热门小组"
+                >
+                    <Person
+                        position={{x: 480, y: 650}}
+                        src={person2}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 480, y: 680}}
+                        src={person3}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 260, y: 100}}
+                        src={person4}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                </Island>
+                <Island
+                    src={island4} bigSrc={islandBig4} position={{x: 200, y: 800}} style={{width: 400, height: 300}}
+                    actionButton={[
+                        <Button>进去看看 >></Button>,
+                    ]}
+                    label="精选小组"
+                >
+                    <Person
+                        position={{x: 480, y: 650}}
+                        src={person2}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 480, y: 680}}
+                        src={person3}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 260, y: 100}}
+                        src={person4}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                </Island>
+                <Island
+                    src={island5} bigSrc={islandBig5} position={{x: 100, y: 1200}} style={{width: 400, height: 300}}
+                    actionButton={[
+                        <Button onClick={()=>{Emitter.emit('global/showHall');}}>进入广场 >></Button>,
+                    ]}
+                    label="广场"
+                >
+                    <Person
+                        position={{x: 480, y: 650}}
+                        src={person2}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 480, y: 680}}
+                        src={person3}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 260, y: 100}}
+                        src={person4}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                </Island>
+                <Island
+                    src={island6} bigSrc={islandBig6} position={{x: 700, y: 1200}} style={{width: 400, height: 300}}
+                    actionButton={[
                         <Button>
                             <Link to="/decorator">装饰空间 >></Link>
                         </Button>,
                         <Button>进入空间 >></Button>,
                     ]}
-                />
-                <Island src={island4} bigSrc={islandBig4} position={{x: 200, y: 800}} style={{width: 400, height: 300}} />
-                <Island src={island5} bigSrc={islandBig5} position={{x: 100, y: 1200}} style={{width: 400, height: 300}} />
-                <Island src={island6} bigSrc={islandBig6} position={{x: 700, y: 1200}} style={{width: 400, height: 300}} />
+                    label="我的空间"
+                >
+                    <Person
+                        position={{x: 480, y: 650}}
+                        src={person2}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 480, y: 680}}
+                        src={person3}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 260, y: 100}}
+                        src={person4}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                </Island>
+                <Island
+                    src={island7} bigSrc={islandBig7} position={{x: 600, y: 0}} style={{width: 400, height: 300}}
+                    actionButton={[
+                        <Button>参加嘉年华 >></Button>,
+                    ]}
+                    label="嘉年华"
+                >
+                    <Person
+                        position={{x: 480, y: 650}}
+                        src={person2}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 480, y: 680}}
+                        src={person3}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 260, y: 100}}
+                        src={person4}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                </Island>
             </DropableBox>
         );
     }
@@ -174,7 +312,7 @@ export default class Game extends Component {
                     <div className="button-group-top">
                         <div onClick={()=>{
                             Emitter.emit('global/hideDetail');
-                        }}><img className="back" src={back} /></div>
+                        }}><img className="back animated" src={back} /></div>
                     </div>                        
                 </Mask>
             </Scene>
@@ -186,14 +324,14 @@ export default class Game extends Component {
             <Scene visible={showIsland}>
                 <Mask>
                     <div style={{display: 'flex', marginTop: '20px', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
-                        {showIslandDialog && <DialogItem {...this.data.dialogConfig}/>}
+                        <DialogItem {...this.data.dialogConfig} visible={showIslandDialog} />
                         <IslandDetail {...this.data.island} showPeople={!showIslandDialog}/>
                     </div>
                     <div className="button-group-top">
                         <div onClick={()=>{
                             Emitter.emit('global/hideIsland');
-                        }}><img className="back" src={back} /></div>
-                        <img className="icons" src={icons} />
+                        }}><img className="back animated" src={back} /></div>
+                        <img className="icons animated" src={icons} />
                     </div>                        
                     <div className="button-group">
                         {this.data.actionButton}
@@ -206,7 +344,10 @@ export default class Game extends Component {
     renderHall() {
         const {showIsland, showHall, showIslandDialog} = this.state;
         return (
-            <Scene visible={showHall}>
+            <Scene animateType={{
+                inType: 'fadeIn',
+                outType: 'fadeOut',
+            }} visible={showHall}>
                 <Hall background={hall}/>
             </Scene>
         );

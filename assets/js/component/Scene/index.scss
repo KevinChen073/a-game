@@ -24,9 +24,17 @@
         overflow: hidden;
         .back {
             width: 120px;
+            &:hover {
+                -webkit-animation-name: tada;
+                animation-name: tada
+            }
         }
         .icons {
             height: 90px;
+            &:hover {
+                -webkit-animation-name: tada;
+                animation-name: tada
+            }
         }
     }
 }

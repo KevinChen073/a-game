@@ -3,9 +3,74 @@ $color-white: rgba(255,255,255,0.4);
 $color-opacity: rgba(255,255,255,0);
 .hall-background {
     transition-duration: 0.5s;
-    
 }
 .hall-container {
+    .thing-wrapper {
+        transition-duration: 0.5s;
+        position: absolute;
+        top: 0;
+        left: 0;
+        .pulse-animate {
+            &:hover {
+                -webkit-animation-name: pulse;
+                animation-name: pulse;
+            }
+        }
+        .thing {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .pic4{
+            left: 3930px;
+            top: 90px;
+            width: 600px;
+        }
+        .light3 {
+            left: 2336px;
+            width: 300px;
+            top: 251px;
+        }
+        .pic3{
+            left: 2863px;
+            top: 271px;
+            width: 500px;
+        }
+        .musicM2 {
+            left: 1493px;
+            top: 305px;
+            width: 654px;
+        }
+        .guitar2{
+            left: 1493px;
+            top: 350px;
+        }
+        .music2 {
+            left: 1073px;
+            top: -15px;
+            width: 654px;
+        }
+        .picture1 {
+            top: 300px;
+            left: 24px;
+            width: 200px;
+        }
+        .light1 {
+            width: 100px;
+            top: 254px;
+            left: 260px;
+        }
+        .pic1 { 
+            width: 50px;
+            top: 300px;
+            left: 285px;
+        }
+        .pic12 {
+            top: 101px;
+            left: 705px;
+            width: 300px;
+        }
+    }
     .edge-guard {
         position: fixed;
         height: 100%;

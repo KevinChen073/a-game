@@ -24,6 +24,7 @@ export default class Info extends Component {
         const {x: posX = 0, y: posY = 0} = position;
         const islandCls = classnames({
             "info-container": true,
+            animated: true
         });
 
         const randomDelay = Math.floor(Math.random()*500+1); // 让每个小岛看上去都不一样

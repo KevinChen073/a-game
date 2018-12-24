@@ -19,7 +19,7 @@ export default class BaseComp extends Component {
         this.state = {
             isBig: false,
         }
-        this.height = document.body.offsetHeight;
+        this.height = 800; // document.body.offsetHeight; // 不能用屏幕高度，必须用一个固定高度，否则会调不了位置
 
     }
 

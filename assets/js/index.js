@@ -5,7 +5,7 @@
 import React, {Component} from "react";
 import ReactDOM from 'react-dom';
 // import { Router, Route, hashHistory } from 'react-router';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch, IndexRoute } from 'react-router-dom';
 
 import Home from './page/Home';
 import Info from './page/Info';
@@ -14,7 +14,7 @@ import Detail from './page/Detail';
 import Decorator from './page/Decorator';
 
 const CustomRouter = (
-    <HashRouter>
+    <HashRouter >
         <Switch>
             <Route path='/login' component={Login} />
             <Route path='/home' component={Home} />

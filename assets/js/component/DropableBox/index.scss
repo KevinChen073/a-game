@@ -66,4 +66,21 @@ $color-opacity: rgba(255,255,255,0);
         height:  $width-size;
         width: $width-size;
     }
+    .button-group-top {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+        height: 70px;
+        overflow: hidden;
+        .icons {
+            height: 90px;
+            &:hover {
+                -webkit-animation-name: tada;
+                animation-name: tada
+            }
+        }
+    }
 }

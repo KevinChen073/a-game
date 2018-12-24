@@ -3,15 +3,23 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 200px;
-    width: 100px;
+    height: 100px;
+    width: 42px;
+    .person-small {
+        height: 100px;
+        width: 42px;
+    }
+    .person-dialog {
+        height: 30px;
+        width: 42px;
+    }
     &:hover {
-        background: rgba(255,255,255,0.3);
+        -webkit-animation-name: bounce;
+        animation-name: bounce
     }
 }
 
 .person-run {
-    
     offset-rotate: 0deg;
     animation: move 3s linear infinite;
     animation-direction: alternate;

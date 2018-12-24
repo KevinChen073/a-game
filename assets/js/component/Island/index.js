@@ -33,49 +33,27 @@ export default class BaseComp extends Component {
     }
 
     onClick() {
-        // 直接用事件形式唤出另一个Page
-        // var offsetLeft = document.getElementsByClassName('drop-container')[0].offsetLeft;
-        // var offsetTop = document.getElementsByClassName('drop-container')[0].offsetTop;
         Emitter.emit('global/showIsland', {...this.props});
-        // if (!this.state.isBig) {
-        //     this.setState({
-        //         posX: -offsetTop + this.windowOffsetTop,
-        //         posY: -offsetLeft + this.windowOffsetLeft,
-        //         isBig: true
-        //     });
-        //     setTimeout(()=>{
-        //         this.setState({
-        //             showPerson: true
-        //         });
-        //     }, 550)
-        //     Emitter.emit('global/showMask');
-        // } else {
-        //     this.setState({
-        //         posX: this.initLeft,
-        //         posY: this.initTop,
-        //         isBig: false,
-        //         showPerson: false
-        //     });
-        //     Emitter.emit('global/hideMask');
-        // }
     }
 
     render() {
-        const {src, bigSrc, shake = true, style = {}, children} = this.props;
-        const {width} = style;
+        const {src, bigSrc, shake = true, style = {}, label} = this.props;
+        const {width, height} = style;
         const { posX, posY } = this.state;
-        const {isBig, showPerson} = this.state;
+        const {isBig} = this.state;
         const islandCls = classnames({
             "island-container": true,
             shake: shake,
-            "island-big": isBig
+            "island-big": isBig,
+            animated: true,
         });
 
         const randomDelay = Math.floor(Math.random()*500+1); // 让每个小岛看上去都不一样
         return (
-            <div onClick={this.onClick} className={islandCls} style={{top: posX, left: posY, animationDuration: `${1000 + randomDelay}ms`}}>
+            <div className={islandCls} style={{top: posX, left: posY, animationDuration: `${1000 + randomDelay}ms`}}>
+                <div className="island-space" onClick={this.onClick} style={{width: `${width}px`, height: `${height || width}px`}} />
                 <img src={isBig ? bigSrc : src} className="island-img" style={{width: `${width}px`, height: 'auto'}} />
-                {showPerson && children}
+                <span className="label">{label}</span>
             </div>
         );
     }
