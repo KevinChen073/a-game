@@ -4,7 +4,14 @@ $color-opacity: rgba(255,255,255,0);
 .hall-background {
     transition-duration: 0.5s;
 }
+.hall-warpper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
 .hall-container {
+    height: 750px;
+    position: relative;
     .thing-wrapper {
         transition-duration: 0.5s;
         position: absolute;
@@ -34,16 +41,17 @@ $color-opacity: rgba(255,255,255,0);
         .pic3{
             left: 2863px;
             top: 271px;
-            width: 500px;
+            width: 480px;
         }
         .musicM2 {
-            left: 1493px;
-            top: 305px;
-            width: 654px;
+            left: 1593px;
+            top: 243px;
+            width: 580px;
         }
         .guitar2{
-            left: 1493px;
-            top: 350px;
+            left: 1627px;
+            top: 374px;
+            width: 180px;
         }
         .music2 {
             left: 1073px;
@@ -51,9 +59,14 @@ $color-opacity: rgba(255,255,255,0);
             width: 654px;
         }
         .picture1 {
-            top: 300px;
+            top: 260px;
             left: 24px;
             width: 200px;
+        }
+        .man {
+            width: 300px;
+            top: 351px;
+            left: 600px;
         }
         .light1 {
             width: 100px;
@@ -66,9 +79,45 @@ $color-opacity: rgba(255,255,255,0);
             left: 285px;
         }
         .pic12 {
-            top: 101px;
+            top: 141px;
             left: 705px;
             width: 300px;
+        }
+        .hint1 {
+            position: absolute;
+            width: 200px;
+            color: #4bffdf;
+            top: 224px;
+            left: 45px;
+        }
+        .hint2 {
+            position: absolute;
+            width: 200px;
+            color: #4bffdf;
+            top: 136px;
+            left: 745px;
+            transform: rotate(-13deg);
+        }
+        .hint3 {
+            position: absolute;
+            width: 200px;
+            color: #4bffdf;
+            top: 283px;
+            left: 3375px;
+        }
+        .hint4 {
+            position: absolute;
+            width: 200px;
+            color: #4bffdf;
+            top: 305px;
+            left: 2395px;
+        }
+        .hint5 {
+            position: absolute;
+            width: 250px;
+            color: #4bffdf;
+            top: 330px;
+            left: 3375px;
         }
     }
     .edge-guard {

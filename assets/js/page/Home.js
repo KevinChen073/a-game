@@ -65,15 +65,37 @@ export default class Game extends Component {
             });
         });
         Emitter.on('global/showHall', ()=>{
+            document.getElementById('home-audio').pause()
+            document.getElementById('guitar-audio').pause()
+            document.getElementById('hall-audio').play()
             this.setState({
                 showHall: true,
             });
         });
+        
         Emitter.on('global/hideHall', ()=>{
+            document.getElementById('hall-audio').pause()
+            document.getElementById('guitar-audio').pause()
+            document.getElementById('home-audio').play()            
             this.setState({
                 showHall: false,
             });
         });
+
+        // Hall - 2吉他场景
+        Emitter.on('global/playGuitarMusic', ()=>{
+            document.getElementById('hall-audio').pause()
+            document.getElementById('home-audio').pause()
+            document.getElementById('guitar-audio').play()
+        });
+        
+        Emitter.on('global/stopGuitarMusic', ()=>{
+            document.getElementById('guitar-audio').pause()
+            document.getElementById('home-audio').pause()
+            document.getElementById('hall-audio').play()
+        });
+
+        // Dialog场景
         Emitter.on('global/showDialog', (config = {})=>{
             // 更新Dialog数据
             this.data.dialogConfig = config;
@@ -102,6 +124,9 @@ export default class Game extends Component {
                 showDetail: false,
             });
         });
+        setTimeout(()=>{
+            document.getElementById('home-audio').play();
+        });
     }
 
     renderHome() {
@@ -119,12 +144,12 @@ export default class Game extends Component {
                 <BaseComp src={cloud3} position={{x: 500, y: 1300}} style={{width: 150}}/>
                 <BaseComp src={cloud4} position={{x: 200, y: 1800}} style={{width: 150}}/>
                 <Island src={island1} bigSrc={islandBig1}
-                    position={{x: 100, y: 200}}
+                    position={{x: 100, y: 1200}}
                     style={{width: 250, height: 250}}
                     actionButton={[
-                        <Button>开始更衣 >></Button>,
+                        <Button>进去看看 >></Button>,
                     ]}
-                    label="我关注的小组"
+                    label={<span className="dianwan-text label">电玩特工队</span>}
                 >
                     <Person
                         position={{x: 480, y: 500}}
@@ -152,12 +177,62 @@ export default class Game extends Component {
                 <Island
                     src={island2}
                     bigSrc={islandBig2}
-                    position={{x: 300, y: 300}}
-                    style={{width: 250}}
+                    position={{x: 0, y: 0}}
+                    style={{width: 450, height: 300}}
+                    actionButton={[
+                        <Button>开始更衣 >></Button>,
+                    ]}
+                    label={<span className="gengyi-text label">更衣室</span>}
+                >
+                    <Person
+                        position={{x: 480, y: 650}}
+                        src={person2}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 480, y: 680}}
+                        src={person3}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 260, y: 100}}
+                        src={person4}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                </Island>
+                <Island
+                    src={island4} bigSrc={islandBig4}
+                    position={{x: 50, y: 700}}
+                    style={{width: 250, height: 180}}
                     actionButton={[
                         <Button>进去看看 >></Button>,
                     ]}
-                    label="更衣室"
+                    label={<span className="lvyou-text label">旅游小分队</span>}
+                >
+                    <Person
+                        position={{x: 480, y: 650}}
+                        src={person2}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 480, y: 680}}
+                        src={person3}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                    <Person
+                        position={{x: 260, y: 100}}
+                        src={person4}
+                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
+                    />
+                </Island>
+                <Island
+                    src={island5} bigSrc={islandBig5}
+                    position={{x: 200, y: 600}}
+                    style={{width: 600, height: 600}}
+                    actionButton={[
+                        <Button onClick={()=>{Emitter.emit('global/showHall');}}>进入广场 >></Button>,
+                    ]}
+                    label={<span className="guangchang-text label">广场</span>}
                 >
                     <Person
                         position={{x: 480, y: 650}}
@@ -178,12 +253,12 @@ export default class Game extends Component {
                 <Island
                     src={island3}
                     bigSrc={islandBig3}
-                    position={{x: 500, y: 700}}
+                    position={{x: 600, y: 600}}
                     style={{width: 250}}
                     actionButton={[
                         <Button>进去看看 >></Button>,
                     ]}
-                    label="热门小组"
+                    label={<span className="jingxuan-text label">精选推荐</span>}
                 >
                     <Person
                         position={{x: 480, y: 650}}
@@ -200,62 +275,18 @@ export default class Game extends Component {
                         src={person4}
                         onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
                     />
-                </Island>
+                </Island>                
                 <Island
-                    src={island4} bigSrc={islandBig4} position={{x: 200, y: 800}} style={{width: 400, height: 300}}
-                    actionButton={[
-                        <Button>进去看看 >></Button>,
-                    ]}
-                    label="精选小组"
-                >
-                    <Person
-                        position={{x: 480, y: 650}}
-                        src={person2}
-                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
-                    />
-                    <Person
-                        position={{x: 480, y: 680}}
-                        src={person3}
-                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
-                    />
-                    <Person
-                        position={{x: 260, y: 100}}
-                        src={person4}
-                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
-                    />
-                </Island>
-                <Island
-                    src={island5} bigSrc={islandBig5} position={{x: 100, y: 1200}} style={{width: 400, height: 300}}
-                    actionButton={[
-                        <Button onClick={()=>{Emitter.emit('global/showHall');}}>进入广场 >></Button>,
-                    ]}
-                    label="广场"
-                >
-                    <Person
-                        position={{x: 480, y: 650}}
-                        src={person2}
-                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
-                    />
-                    <Person
-                        position={{x: 480, y: 680}}
-                        src={person3}
-                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
-                    />
-                    <Person
-                        position={{x: 260, y: 100}}
-                        src={person4}
-                        onClick={()=>{Emitter.emit('global/showDialog', {name: '弟弟'});}}
-                    />
-                </Island>
-                <Island
-                    src={island6} bigSrc={islandBig6} position={{x: 700, y: 1200}} style={{width: 400, height: 300}}
+                    src={island6} bigSrc={islandBig6}
+                    position={{x: 600, y: 1100}}
+                    style={{width: 600, height: 600}}
                     actionButton={[
                         <Button>
                             <Link to="/decorator">装饰空间 >></Link>
                         </Button>,
                         <Button>进入空间 >></Button>,
                     ]}
-                    label="我的空间"
+                    label={<span className="kongjian-text label">我的空间</span>}
                 >
                     <Person
                         position={{x: 480, y: 650}}
@@ -274,11 +305,13 @@ export default class Game extends Component {
                     />
                 </Island>
                 <Island
-                    src={island7} bigSrc={islandBig7} position={{x: 600, y: 0}} style={{width: 400, height: 300}}
+                    src={island7} bigSrc={islandBig7}
+                    position={{x: 480, y: 200}}
+                    style={{width: 300, height: 400}}
                     actionButton={[
                         <Button>参加嘉年华 >></Button>,
                     ]}
-                    label="嘉年华"
+                    label={<span className="jianianhua-text label">嘉年华</span>}
                 >
                     <Person
                         position={{x: 480, y: 650}}
@@ -305,9 +338,8 @@ export default class Game extends Component {
         return (
             <Scene visible={showDetail}>
                 <Mask>
-                    <div style={{marginTop: '150px', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
-                        <img src={detail} />
-                        <span className="detail-text">巴啦啦小魔仙猪猪美琪变身！</span>
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
+                        <img src={detail} style={{width: '1200px'}}/>
                     </div>
                     <div className="button-group-top">
                         <div onClick={()=>{
@@ -359,6 +391,9 @@ export default class Game extends Component {
                 {this.renderIsland()}
                 {this.renderHall()}
                 {this.renderDetail()}
+                <audio id="home-audio" preload src="home.mp3" />
+                <audio id="guitar-audio" preload src="guitar.mp3" />
+                <audio id="hall-audio" preload src="hall.mp3" />
             </div>
         );
     }

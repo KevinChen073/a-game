@@ -53,7 +53,7 @@ export default class BaseComp extends Component {
             <div className={islandCls} style={{top: posX, left: posY, animationDuration: `${1000 + randomDelay}ms`}}>
                 <div className="island-space" onClick={this.onClick} style={{width: `${width}px`, height: `${height || width}px`}} />
                 <img src={isBig ? bigSrc : src} className="island-img" style={{width: `${width}px`, height: 'auto'}} />
-                <span className="label">{label}</span>
+                {label}
             </div>
         );
     }

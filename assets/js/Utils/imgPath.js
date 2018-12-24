@@ -39,6 +39,7 @@ module.exports = {
     light3: `${imgPath}/hall/3-light.png`,
     pic3: `${imgPath}/hall/3-pic.png`,
     pic4: `${imgPath}/hall/4-pic.png`,
+    man: `${imgPath}/hall/1-man.png`,
 
     back: `${imgPath}/comp/back.png`,
     icons: `${imgPath}/comp/icons.png`,
@@ -49,7 +50,6 @@ module.exports = {
     detail: `${imgPath}/detail.jpg`,
 
     dialog: `${imgPath}/dialog.png`,
-    detail: `${imgPath}/detail-person.jpeg`,
 
     banner: `${imgPath}/login/banner.jpg`,
     icon_check: `${imgPath}/login/icon_check.jpg`,
