@@ -11,7 +11,7 @@ import './index.scss';
 export default class Scene extends Component {
 
     render() {
-        const {children, visible, animateType = {}} = this.props;
+        const {children, visible, animateType = {}, backgroundColor} = this.props;
         const { inType = 'zoomIn', outType = 'zoomOut' } = animateType;
 
         // if (!visible) {
@@ -31,7 +31,7 @@ export default class Scene extends Component {
                 unmountOnExit={true}
                 onExited={() => {}}
             >
-                <div className='scene-container'>
+                <div className='scene-container' style={{backgroundColor: backgroundColor}}>
                     {children}
                 </div>
             </CSSTransition>

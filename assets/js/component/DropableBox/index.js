@@ -31,6 +31,7 @@ export default class DropableBox extends Component {
         this.onMouseDown = this.onMouseDown.bind(this);
         this.onMouseMove = this.onMouseMove.bind(this);
         this.onMouseUp = this.onMouseUp.bind(this);
+        this.onZoom = this.onZoom.bind(this);
 
         const { bgWidth, bgHeight } = props;
 
@@ -92,11 +93,6 @@ export default class DropableBox extends Component {
         this.moveInterval = setInterval(()=>{
             this.startMove(type);
         }, 40);
-        // cancelAnimationFrame(this.moveInterval);
-        // this.moveInterval = requestAnimationFrame(()=>{
-        //     this.startMove(type);
-        //     requestAnimationFrame(arguments.callee)
-        // });
     }
 
     resetMove() {
@@ -139,6 +135,13 @@ export default class DropableBox extends Component {
             }
         }, 500);
     }
+    onZoom() {
+        const {isMiniMode} = this.state;
+        this.setState({
+            isMiniMode: !isMiniMode
+        });
+        this.resetMove();
+    }
     render() {
         const {children, dropable = true, backgroundContent, maskContent} = this.props;
         const {bgWidth, bgHeight, canMove, showMask} = this.props;
@@ -170,16 +173,11 @@ export default class DropableBox extends Component {
                     <div className="edge-guard edge-left" onMouseOver={()=>{this.doMove('left')}} onMouseOut={()=>{this.stopMove()}}  />,
                     <div className="edge-guard edge-right" onMouseOver={()=>{this.doMove('right')}} onMouseOut={()=>{this.stopMove()}}  />,
                     <div className="edge-guard edge-bottom" onMouseOver={()=>{this.doMove('bottom')}} onMouseOut={()=>{this.stopMove()}}  />,
-                    <div className="button-group-top">
-                        <img className="icons animated" src={icons} />
-                    </div> 
                 ]}
-                {canMove && <div className="edge-guard edge-button" onClick={()=>{
-                    this.setState({
-                        isMiniMode: !isMiniMode
-                    });
-                    this.resetMove();
-                }} />}
+                <div className="button-group-top">
+                    <img className="icons animated" onClick={this.onZoom} src={icons} />
+                </div>                 
+                {canMove && <div className="edge-guard edge-button" onClick={this.onZoom} />}
             </div>
         );
     }

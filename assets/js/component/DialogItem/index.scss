@@ -1,8 +1,10 @@
 .dialog-container {
     display: flex;
     width: 450px;
-    margin-left: 200px;
     position: relative;
+    &.margincls {
+        margin-left: 200px;
+    }
     .dialog-content {
         width: 450px;
         height: 630px;

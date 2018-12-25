@@ -3,7 +3,7 @@ $color-white: rgba(255,255,255,0.4);
 $color-opacity: rgba(255,255,255,0);
 
 .container {
-    background-color: rgb(2,9,38);
+    background-color: #000a34;
     position: absolute;
     top: 0;
     left: 0;
@@ -12,7 +12,7 @@ $color-opacity: rgba(255,255,255,0);
     overflow: hidden;
     .drop-container {
         position: absolute;
-        transition-property: scale;
+        transition-property: transform;
         transition-duration: 0.2s;
         transform: scale(1);
         transform-origin: 0 0;

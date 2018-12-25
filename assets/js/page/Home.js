@@ -5,6 +5,7 @@
 import React, {Component} from "react";
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom'
+import { CSSTransition } from 'react-transition-group';
 
 import Background from '../component/Background';
 import Scene from '../component/Scene';
@@ -12,13 +13,15 @@ import Mask from '../component/Mask';
 import Button from '../component/Button';
 import Island from '../component/Island';
 import IslandDetail from '../component/Island-detail';
-import Hall from '../component/Hall';
 import Person from '../component/Person';
 import Info from '../component/Info';
 import BaseComp from '../component/BaseComp';
 import DropableBox from '../component/DropableBox';
 import DialogItem from '../component/DialogItem';
-import { CSSTransition } from 'react-transition-group';
+
+import HallScene from '../component/HallScene';
+import TravelScene from '../component/TravelScene';
+import ClothesScene from '../component/ClothesScene';
 
 import Emitter from '../Utils/Emitter';
 import './home.scss';
@@ -30,7 +33,7 @@ import {
     info1,
     person1, person2, person3, person4,
     hall,
-    back, icons,detail
+    back, icons,detail, clothesScene, travelScene, friendDetail
 } from '../Utils/imgPath';
 
 export default class Game extends Component {
@@ -64,35 +67,81 @@ export default class Game extends Component {
                 showIsland: false,
             });
         });
+        const musicList = ['home-audio', 'guitar-audio', 'hall-audio'];
+        function playMusic(id) {
+            musicList.forEach((v)=>{
+                document.getElementById(v).pause();
+            });
+            document.getElementById(id).play();
+        }
+        function stopMusic() {
+            musicList.forEach((v)=>{
+                document.getElementById(v).pause();
+            });
+        }
         Emitter.on('global/showHall', ()=>{
-            document.getElementById('home-audio').pause()
-            document.getElementById('guitar-audio').pause()
-            document.getElementById('hall-audio').play()
+            // 要搞一个音乐播放器才行
+            playMusic('hall-audio');
+            // document.getElementById('home-audio').pause()
+            // document.getElementById('guitar-audio').pause()
+            // document.getElementById('hall-audio').play()
             this.setState({
                 showHall: true,
             });
         });
         
         Emitter.on('global/hideHall', ()=>{
-            document.getElementById('hall-audio').pause()
-            document.getElementById('guitar-audio').pause()
-            document.getElementById('home-audio').play()            
+            playMusic('home-audio');
+            // document.getElementById('hall-audio').pause()
+            // document.getElementById('guitar-audio').pause()
+            // document.getElementById('home-audio').play()            
             this.setState({
                 showHall: false,
             });
         });
 
+        //Travel
+        Emitter.on('global/showTravel', ()=>{
+            playMusic('hall-audio');
+            this.setState({
+                showTravel: true,
+            });
+        });
+        
+        Emitter.on('global/hideTravel', ()=>{
+            playMusic('home-audio');
+            this.setState({
+                showTravel: false,
+            });
+        });        
+        //Clothes
+        Emitter.on('global/showClothes', ()=>{
+            playMusic('hall-audio');
+            this.setState({
+                showClothes: true,
+            });
+        });
+        
+        Emitter.on('global/hideClothes', ()=>{
+            playMusic('home-audio');
+            this.setState({
+                showClothes: false,
+            });
+        });  
+
         // Hall - 2吉他场景
         Emitter.on('global/playGuitarMusic', ()=>{
-            document.getElementById('hall-audio').pause()
-            document.getElementById('home-audio').pause()
-            document.getElementById('guitar-audio').play()
+            playMusic('guitar-audio');
+            // document.getElementById('hall-audio').pause()
+            // document.getElementById('home-audio').pause()
+            // document.getElementById('guitar-audio').play()
         });
         
         Emitter.on('global/stopGuitarMusic', ()=>{
-            document.getElementById('guitar-audio').pause()
-            document.getElementById('home-audio').pause()
-            document.getElementById('hall-audio').play()
+            playMusic('hall-audio');
+            // document.getElementById('guitar-audio').pause()
+            // document.getElementById('home-audio').pause()
+            // document.getElementById('hall-audio').play()
         });
 
         // Dialog场景
@@ -111,8 +160,12 @@ export default class Game extends Component {
             });
         });
         Emitter.on('global/showDetail', (config = {})=>{
+            const { detailPic = '', color = '' } = config;
+            console.log(config)
             // 更新Detail数据
             this.data.detailConfig = config;
+            this.data.color = color;
+            this.data.detailPic = detailPic || detail;
             this.setState({
                 showDetail: true,
             });
@@ -180,7 +233,7 @@ export default class Game extends Component {
                     position={{x: 0, y: 0}}
                     style={{width: 450, height: 300}}
                     actionButton={[
-                        <Button>开始更衣 >></Button>,
+                        <Button onClick={()=>{Emitter.emit('global/showClothes');}}>开始更衣 >></Button>,
                     ]}
                     label={<span className="gengyi-text label">更衣室</span>}
                 >
@@ -205,7 +258,7 @@ export default class Game extends Component {
                     position={{x: 50, y: 700}}
                     style={{width: 250, height: 180}}
                     actionButton={[
-                        <Button>进去看看 >></Button>,
+                        <Button onClick={()=>{Emitter.emit('global/showTravel');}}>进去看看 >></Button>,
                     ]}
                     label={<span className="lvyou-text label">旅游小分队</span>}
                 >
@@ -256,7 +309,7 @@ export default class Game extends Component {
                     position={{x: 600, y: 600}}
                     style={{width: 250}}
                     actionButton={[
-                        <Button>进去看看 >></Button>,
+                        <Button onClick={()=>{Emitter.emit('global/showHall');}}>进去看看 >></Button>,
                     ]}
                     label={<span className="jingxuan-text label">精选推荐</span>}
                 >
@@ -284,7 +337,7 @@ export default class Game extends Component {
                         <Button>
                             <Link to="/decorator">装饰空间 >></Link>
                         </Button>,
-                        <Button>进入空间 >></Button>,
+                        <Button onClick={()=>{Emitter.emit('global/showHall');}}>进入空间 >></Button>,
                     ]}
                     label={<span className="kongjian-text label">我的空间</span>}
                 >
@@ -309,7 +362,7 @@ export default class Game extends Component {
                     position={{x: 480, y: 200}}
                     style={{width: 300, height: 400}}
                     actionButton={[
-                        <Button>参加嘉年华 >></Button>,
+                        <Button onClick={()=>{Emitter.emit('global/showHall');}}>参加嘉年华 >></Button>,
                     ]}
                     label={<span className="jianianhua-text label">嘉年华</span>}
                 >
@@ -336,10 +389,10 @@ export default class Game extends Component {
     renderDetail() {
         const {showDetail, showIslandDialog} = this.state;
         return (
-            <Scene visible={showDetail}>
+            <Scene visible={showDetail} backgroundColor={this.data.color}>
                 <Mask>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
-                        <img src={detail} style={{width: '1200px'}}/>
+                        <img src={this.data.detailPic} style={{width: '1200px'}}/>
                     </div>
                     <div className="button-group-top">
                         <div onClick={()=>{
@@ -380,7 +433,29 @@ export default class Game extends Component {
                 inType: 'fadeIn',
                 outType: 'fadeOut',
             }} visible={showHall}>
-                <Hall background={hall}/>
+                <HallScene background={hall}/>
+            </Scene>
+        );
+    }
+    renderClothes() {
+        const {showClothes} = this.state;
+        return (
+            <Scene animateType={{
+                inType: 'fadeIn',
+                outType: 'fadeOut',
+            }} visible={showClothes}>
+                <ClothesScene background={clothesScene}/>
+            </Scene>
+        );
+    }
+    renderTravel() {
+        const {showTravel} = this.state;
+        return (
+            <Scene animateType={{
+                inType: 'fadeIn',
+                outType: 'fadeOut',
+            }} visible={showTravel}>
+                <TravelScene background={travelScene}/>
             </Scene>
         );
     }
@@ -390,6 +465,8 @@ export default class Game extends Component {
                 {this.renderHome()}
                 {this.renderIsland()}
                 {this.renderHall()}
+                {this.renderTravel()}
+                {this.renderClothes()}
                 {this.renderDetail()}
                 <audio id="home-audio" preload src="home.mp3" />
                 <audio id="guitar-audio" preload src="guitar.mp3" />

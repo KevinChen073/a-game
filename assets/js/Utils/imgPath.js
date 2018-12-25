@@ -29,6 +29,8 @@ module.exports = {
     personDialog: `${imgPath}/person-dialog.gif`,
     
     hall: `${imgPath}/hall/hall.jpg`,
+    travelScene: `${imgPath}/hall/travelScene.jpg`,
+    clothesScene: `${imgPath}/hall/clothesScene.jpg`,
     pic1: `${imgPath}/hall/1-pic.png`,
     dialog1: `${imgPath}/hall/1-dialog.gif`,
     pic12: `${imgPath}/hall/1-pic2.png`,
@@ -48,8 +50,12 @@ module.exports = {
     welcome: `${imgPath}/welcome.jpg`,
     decorator: `${imgPath}/decorator.jpg`,
     detail: `${imgPath}/detail.jpg`,
+    friendDetail: `${imgPath}/friend.jpg`,
 
     dialog: `${imgPath}/dialog.png`,
+
+    iconLeft: `${imgPath}/icon-left.png`,
+    iconRight: `${imgPath}/icon-right.png`,
 
     banner: `${imgPath}/login/banner.jpg`,
     icon_check: `${imgPath}/login/icon_check.jpg`,
