@@ -15,13 +15,15 @@ import Decorator from './page/Decorator';
 
 const CustomRouter = (
     <HashRouter >
-        <Switch>
-            <Route path='/login' component={Login} />
-            <Route path='/home' component={Home} />
-            <Route path='/info' component={Info} />
-            <Route path='/person-info' component={Detail} />
-            <Route path='/decorator' component={Decorator} />
-        </Switch>
+        <div id="app-container">
+            <Switch>
+                <Route path='/login' component={Login} />
+                <Route path='/home' component={Home} />
+                <Route path='/info' component={Info} />
+                <Route path='/person-info' component={Detail} />
+                <Route path='/decorator' component={Decorator} />
+            </Switch>
+        </div>
     </HashRouter>
 );
 
